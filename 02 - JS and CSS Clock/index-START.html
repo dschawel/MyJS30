@@ -11,9 +11,9 @@
         <h1 class="seattle">Seattle</h1>
         <div class="seattle-clock">
           <div class="clock-face">
-            <div class="hand hour-hand"></div>
-            <div class="hand min-hand"></div>
-            <div class="hand second-hand"></div>
+            <div class="hand seattle-hour-hand"></div>
+            <div class="hand seattle-min-hand"></div>
+            <div class="hand seattle-second-hand"></div>
           </div>
         </div>
       </div>
@@ -179,7 +179,7 @@
         background: black;
       }
 
-      .second-hand, .austin-second-hand, .maplewood-second-hand, .melbourne-second-hand {
+      .seattle-second-hand, .austin-second-hand, .maplewood-second-hand, .melbourne-second-hand {
         background: red;
       }
 
@@ -190,11 +190,11 @@
     </style>
     <script>
       // Seattle time 
-      const secondHand = document.querySelector(".second-hand");
-      const minuteHand = document.querySelector(".min-hand");
-      const hourHand = document.querySelector(".hour-hand");
+      const secondHand = document.querySelector(".seattle-second-hand");
+      const minuteHand = document.querySelector(".seattle-min-hand");
+      const hourHand = document.querySelector(".seattle-hour-hand");
 
-      function setDate() {
+      const seattleTime = () => {
         const now = new Date().toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
         // console.log("Seattle", now)
         const seconds = now.split(",")[1].split(" ")[1].slice(5)
@@ -278,7 +278,7 @@
         maplewoodSecondHand.style.transform = `rotate(${secondsDegrees}deg)`;
 
         const maplewoodMinute = now.split(",")[1].split(" ")[1].split(":")[1]
-        const minsDegrees = ((maplewoodMinute / 60) * 360) + ((maplewoodSeconds/60)*6) + 90;;
+        const minsDegrees = ((maplewoodMinute / 60) * 360) + ((maplewoodSeconds/60)*6) + 90;
         if (minsDegrees == 90) {
           maplewoodMinuteHand.classList.add("no-transition")
         } else {
@@ -305,11 +305,11 @@
         // console.log("Melbourne time", now)
         const melbourneSeconds = now.split(",")[1].split(" ")[1].slice(6)
         const secondsDegrees = ((melbourneSeconds / 60) * 360) + 90;
-        if (secondsDegrees == 90) {
-          melbourneSecondHand.classList.add("no-transition")
-        } else {
-          melbourneSecondHand.classList.remove("no-transition")
-        }
+        // if (secondsDegrees == 90) {
+        //   melbourneSecondHand.classList.add("no-transition")
+        // } else {
+        //   melbourneSecondHand.classList.remove("no-transition")
+        // }
         melbourneSecondHand.style.transform = `rotate(${secondsDegrees}deg)`;
         const melbourneMinute = now.split(",")[1].split(" ")[1].split(":")[1]
         const minsDegrees = ((melbourneMinute / 60) * 360) + ((melbourneSeconds/60)*6) + 90;;
@@ -331,7 +331,7 @@
       }
       
 
-      setInterval(setDate, 1000);
+      setInterval(seattleTime, 1000);
       setInterval(austinTime, 1000)
       setInterval(maplewoodTime, 1000)
       setInterval(melbourneTime, 1000)
