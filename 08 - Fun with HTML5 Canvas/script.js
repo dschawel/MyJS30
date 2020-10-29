@@ -5,7 +5,7 @@ canvas.height = window.innerHeight;
 ctx.strokeStyle = '#BADA55';
 ctx.lineJoin = 'round';
 ctx.lineCap = 'round';
-ctx.lineWidth = 50;
+ctx.lineWidth = 75;
 // ctx.globalCompositeOperation = 'luminosity';
 
 let isDrawing = false;
@@ -32,7 +32,7 @@ function draw(e) {
     if (hue >= 360) {
         hue = 0
     }
-    if (ctx.lineWidth >= 50 || ctx.lineWidth <= 25) {
+    if (ctx.lineWidth >= 75 || ctx.lineWidth <= 25) {
         direction = !direction;
     }
     if (direction) {
